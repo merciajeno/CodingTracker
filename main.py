@@ -1,12 +1,13 @@
 import requests
 from datetime import datetime
-
-USERNAME = "mercia"
-TOKEN = "iamahackerandadetective"
-BASE_URL = "https://pixe.la/v1/users"
-
+from dotenv import load_dotenv
+load_dotenv()
+import os
+BASE_URL= os.getenv('BASE_URL')
+USERNAME = 'mercia'
+print(USERNAME)
 headers = {
-    "X-USER-TOKEN": TOKEN
+    "X-USER-TOKEN": os.getenv('TOKEN')
 }
 
 today = datetime.now().strftime("%Y%m%d")
