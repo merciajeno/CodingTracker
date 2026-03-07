@@ -1,19 +1,20 @@
 import smtplib
 from email.message import EmailMessage
-
+from tracker import submit_streaks
 # Configuration
 smtp_server = "smtp.gmail.com"
 port = 465  # Port for SSL
 sender_email = "mercia.jeno@gmail.com"
 password = "mwhr iifo cjvz inyw"  # 16-digit App Password
-receiver_email = "mercia.jeno@gmailcom"
+receiver_email = "mercia.jeno@gmail.com"
 
 # Create the message
 msg = EmailMessage()
 msg['Subject'] = "Testing Python Email"
 msg['From'] = sender_email
 msg['To'] = receiver_email
-msg.set_content("Hello! This message was sent using Python's smtplib.")
+message=f'The streak is {submit_streaks()}'
+msg.set_content(message)
 
 # Send the email
 with smtplib.SMTP_SSL(smtp_server, port) as server:
