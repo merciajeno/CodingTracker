@@ -55,5 +55,5 @@ def post_pixel(graph_id, quantity):
 
 
 # --------- ADD PIXELS ----------
-post_pixel("coding", 3)
-post_pixel("github", 5)
+post_pixel("coding", 6)
+post_pixel("github", 8)
