@@ -33,4 +33,4 @@ data = response.json()
 
 submissions = data["data"]["recentAcSubmissionList"]
 print(len(submissions))
-#print(json.dumps(submissions, indent=2))
+print(json.dumps(submissions, indent=2))
