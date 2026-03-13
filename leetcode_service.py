@@ -1,5 +1,5 @@
 import requests
-import json
+from datetime import datetime, timezone
 
 url = "https://leetcode.com/graphql"
 
@@ -14,23 +14,29 @@ query recentAcSubmissions($username: String!) {
 }
 """
 
-variables = {
-    "username": "Mercia_Jeno"
-}
+variables = {"username": "Mercia_Jeno"}
 
-payload = {
-    "query": query,
-    "variables": variables
-}
+payload = {"query": query, "variables": variables}
 
-headers = {
-    "Content-Type": "application/json"
-}
+headers = {"Content-Type": "application/json"}
 
 response = requests.post(url, json=payload, headers=headers)
-
 data = response.json()
 
 submissions = data["data"]["recentAcSubmissionList"]
-print(len(submissions))
-print(json.dumps(submissions, indent=2))
+
+today = datetime.now(timezone.utc).date()
+solved_today = False
+
+for sub in submissions:
+    submission_time = datetime.fromtimestamp(int(sub["timestamp"]), tz=timezone.utc)
+    if submission_time.date() < today:
+        break
+    if submission_time.date() == today:
+        solved_today = True
+        break
+
+if solved_today:
+    print("You solved at least one problem today")
+else:
+    print("No problems solved today")
