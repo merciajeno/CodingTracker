@@ -1,6 +1,7 @@
 import smtplib
 from email.message import EmailMessage
 from tracker import submit_streaks
+from tracker import submit_leetcode_commits
 # Configuration
 smtp_server = "smtp.gmail.com"
 port = 465  # Port for SSL
@@ -13,7 +14,7 @@ msg = EmailMessage()
 msg['Subject'] = "Testing Python Email"
 msg['From'] = sender_email
 msg['To'] = receiver_email
-message=f'The streak is {submit_streaks()}'
+message=f'The streak is {submit_streaks()}. The leetcode commits is:{submit_leetcode_commits()}'
 msg.set_content(message)
 
 # Send the email

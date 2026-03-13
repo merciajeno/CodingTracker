@@ -2,7 +2,7 @@ import requests
 from datetime import datetime, timezone
 
 url = "https://leetcode.com/graphql"
-
+count =0
 query = """
 query recentAcSubmissions($username: String!) {
   recentAcSubmissionList(username: $username) {
