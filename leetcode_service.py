@@ -28,14 +28,18 @@ submissions = data["data"]["recentAcSubmissionList"]
 today = datetime.now(timezone.utc).date()
 solved_today = False
 
-for sub in submissions:
+def return_submissions():
+ global solved_today, count
+ for sub in submissions:
     submission_time = datetime.fromtimestamp(int(sub["timestamp"]), tz=timezone.utc)
     if submission_time.date() < today:
         break
     if submission_time.date() == today:
         solved_today = True
-        break
+        count = count+1
+ return count
 
+return_submissions()
 if solved_today:
     print("You solved at least one problem today")
 else:
