@@ -3,6 +3,7 @@ import datetime
 github_url = "https://api.github.com/search/commits"
 today = datetime.datetime.now()
 def get_commits(username):
+    count = 0
     params = {
         "q": f"author:{username}",
         "sort": "author-date",
@@ -22,6 +23,8 @@ def get_commits(username):
         date = commit["author"]["date"]
         date=date[:date.find('T')]
         if today.strftime('%Y-%m-%d')==date:
-         print(commit["author"]["date"], "-", commit["message"])
+          print(commit["author"]["date"], "-", commit["message"])
+          count = count+1
+    return count #no.of commits
 
 get_commits("merciajeno")

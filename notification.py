@@ -1,3 +1,4 @@
+#just to notify the user
 import smtplib
 from email.message import EmailMessage
 from tracker import submit_streaks
