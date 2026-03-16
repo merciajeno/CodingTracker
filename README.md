@@ -1,0 +1,1 @@
+An unified platform to track your github commits and leetcode streaks. It also analyses your behavior like if you keep doing easy problems in leetcode or in case of git,just pushing meaningless commits. It notifies the user based on the behavior and also shows the streaks via pixela.
