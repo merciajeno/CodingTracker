@@ -1,3 +1,5 @@
+from typing import Any
+
 import requests
 from datetime import datetime, timezone
 
@@ -20,16 +22,16 @@ payload = {"query": query, "variables": variables}
 
 headers = {"Content-Type": "application/json"}
 
-response = requests.post(url, json=payload, headers=headers)
-data = response.json()
-
-submissions = data["data"]["recentAcSubmissionList"]
-
-today = datetime.now(timezone.utc).date()
 solved_today = False
 
-def return_submissions():
- global solved_today, count
+def return_submissions() -> int | Any:
+ response = requests.post(url, json=payload, headers=headers)
+ data = response.json()
+ global solved_today,count
+ submissions = data["data"]["recentAcSubmissionList"]
+
+ today = datetime.now(timezone.utc).date()
+
  for sub in submissions:
     submission_time = datetime.fromtimestamp(int(sub["timestamp"]), tz=timezone.utc)
     if submission_time.date() < today:
@@ -39,8 +41,9 @@ def return_submissions():
         count = count+1
  return count
 
-return_submissions()
-if solved_today:
-    print("You solved at least one problem today")
-else:
-    print("No problems solved today")
+if __name__=='__main__':
+     return_submissions()
+     if solved_today:
+         print("You solved at least one problem today")
+     else:
+         print("No problems solved today")

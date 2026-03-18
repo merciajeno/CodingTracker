@@ -25,6 +25,7 @@ def get_commits(username):
         if today.strftime('%Y-%m-%d')==date:
           print(commit["author"]["date"], "-", commit["message"])
           count = count+1
+
     return count #no.of commits
 
 get_commits("merciajeno")

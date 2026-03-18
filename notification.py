@@ -1,13 +1,17 @@
 #just to notify the user
 import smtplib
+import os
 from email.message import EmailMessage
 from tracker import submit_streaks
 from tracker import submit_leetcode_commits
+from dotenv import load_dotenv
+
+load_dotenv()
 # Configuration
 smtp_server = "smtp.gmail.com"
 port = 465  # Port for SSL
-sender_email = "mercia.jeno@gmail.com"
-password = "mwhr iifo cjvz inyw"  # 16-digit App Password
+sender_email = os.getenv('SENDER_EMAIL')
+password = os.getenv('password')  # 16-digit App Password
 receiver_email = "mercia.jeno@gmail.com"
 
 # Create the message

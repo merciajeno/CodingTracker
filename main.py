@@ -1,6 +1,8 @@
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
+from github_service import get_commits
+from leetcode_service import return_submissions
 load_dotenv()
 import os
 BASE_URL= os.getenv('BASE_URL')
@@ -55,5 +57,5 @@ def post_pixel(graph_id, quantity):
 
 
 # --------- ADD PIXELS ----------
-post_pixel("coding", 6)
-post_pixel("github", 8)
+post_pixel("coding", get_commits('merciajeno'))
+post_pixel("github", return_submissions())
