@@ -1,6 +1,6 @@
 #to use rules and send notifications if delay in streaks
-from github_service import get_commits
-from leetcode_service import return_submissions
+from scripts.github_service import get_commits
+from scripts.leetcode_service import return_submissions
 #here we need rules
 
 def submit_streaks():

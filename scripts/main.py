@@ -1,8 +1,8 @@
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
-from github_service import get_commits
-from leetcode_service import return_submissions
+from scripts.github_service import get_commits
+from scripts.leetcode_service import return_submissions
 load_dotenv()
 import os
 BASE_URL= os.getenv('BASE_URL')
